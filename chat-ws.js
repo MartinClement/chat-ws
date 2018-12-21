@@ -1,10 +1,27 @@
 "use strict";
 
+/////// FIX OPENODE ISSUE ///
+
+const http = require("http");
+
+const server = http.createServer(function (req, res) {
+	res.end("Hello!");
+})
+
+server.listen(80, (err) => {
+	if ( ! err) {
+		console.log(`server is listening on 80`)
+	}
+})
+
+////////
+
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'chat-ws';
 
 // Port where we'll run the websocket server
 var webSocketsServerPort = 80;
+var port = normalizePort(process.env.PORT || '8080');
 
 // websocket and http servers
 var webSocketServer = require('websocket').server;
@@ -41,7 +58,7 @@ var server = http.createServer(function(request, response) {
   // not HTTP server
 });
 
-server.listen(webSocketsServerPort, function() {
+server.listen(port, function() {
   console.log((new Date()) + " Server is listening on port "
       + webSocketsServerPort);
 });
