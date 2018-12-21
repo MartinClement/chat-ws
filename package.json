@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node chat-ws.js",
-    "dev": "node chat-local-ws.js"
+    "start": "node chat-ws.j
   },
   "repository": {
     "type": "git",
