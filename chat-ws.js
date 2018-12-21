@@ -1,8 +1,7 @@
 "use strict";
 
+var http = require('http');
 /////// FIX OPENODE ISSUE ///
-
-const http = require("http");
 
 const server = http.createServer(function (req, res) {
 	res.end("Hello!");
@@ -25,7 +24,6 @@ var port = normalizePort(process.env.PORT || '8080');
 
 // websocket and http servers
 var webSocketServer = require('websocket').server;
-var http = require('http');
 
 
 /**
