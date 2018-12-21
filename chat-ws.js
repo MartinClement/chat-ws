@@ -1,27 +1,14 @@
 "use strict";
 
-
-// const http = require("http");
-
-// const server = http.createServer(function (req, res) {
-// 	res.end("Hello!");
-// })
-
-// server.listen(80, (err) => {
-// 	if ( ! err) {
-// 		console.log(`server is listening on 80`)
-// 	}
-// })
-
-
+const WS_PORT = 80
 const http = require("http");
 
 // websocket and http servers
-var webSocketServer = require('websocket').server;
+const webSocketServer = require('websocket').server;
 
 
-var history = [ ];
-var clients = [ ];
+const history = [ ];
+const clients = [ ];
 
 function htmlEntities(str) {
   return String(str)
@@ -29,7 +16,7 @@ function htmlEntities(str) {
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-var colors = [ 'red', 'green', 'blue', 'magenta', 'purple', 'plum', 'orange' ];
+const colors = [ 'red', 'green', 'blue', 'magenta', 'purple', 'plum', 'orange' ];
 colors.sort(function(a,b) { return Math.random() > 0.5; } );
 
 // /**
@@ -39,10 +26,10 @@ const server = http.createServer((req, res) => {
   res.end("Hello!");
 });
 
-server.listen(80, (err) => {
+server.listen(WS_PORT, (err) => {
   if ( ! err ) {
         console.log((new Date()) + " Server is listening on port "
-      + 80);
+      + WS_PORT);
   }
 });
 
@@ -70,8 +57,8 @@ wsServer.on('request', (request) => {
   // we need to know client index to remove them on 'close' event
   const index = clients.push(connection) - 1;
   
-  var userName = false;
-  var userColor = false;
+  const userName = false;
+  const userColor = false;
   
   console.log((new Date()) + ' Connection accepted.');
   
