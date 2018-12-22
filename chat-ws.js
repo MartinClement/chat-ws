@@ -1,14 +1,14 @@
 "use strict";
 
-const WS_PORT = 80
+const WS_PORT = 1337
 const http = require("http");
 
 // websocket and http servers
 const webSocketServer = require('websocket').server;
 
 
-const history = [ ];
-const clients = [ ];
+let history = [ ];
+let clients = [ ];
 
 function htmlEntities(str) {
   return String(str)
@@ -57,8 +57,8 @@ wsServer.on('request', (request) => {
   // we need to know client index to remove them on 'close' event
   const index = clients.push(connection) - 1;
   
-  const userName = false;
-  const userColor = false;
+  let userName = false;
+  let userColor = false;
   
   console.log((new Date()) + ' Connection accepted.');
   
